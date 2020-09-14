@@ -1,13 +1,13 @@
-export const getPoetry = async () => {
-    const URL = 'https://v1.jinrishici.com/all.json';
-
-    const res = await fetch(URL)
-    const resJson = await res.json();
-
-    const result = [];
-    result.push(resJson.origin)
-    result.push(resJson.author)
-    result.push(resJson.content)
-    return result;
+export const getPoetry = () => {
+    return fetch("https://v1.jinrishici.com/all.json", {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then((result) => {
+        return [result.origin, result.author, result.content];
+    })
+    .catch((err) =>{
+        err.massage;
+    }); 
 }
 
